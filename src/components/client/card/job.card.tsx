@@ -8,8 +8,10 @@ import { isMobile } from 'react-device-detect';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from 'styles/client.module.scss';
 import dayjs from 'dayjs';
+import 'dayjs/locale/vi';
 import relativeTime from 'dayjs/plugin/relativeTime';
 dayjs.extend(relativeTime)
+
 
 interface IProps {
     showPagination?: boolean;
@@ -82,6 +84,7 @@ const JobCard = (props: IProps) => {
                         </Col>
 
                         {displayJob?.map(item => {
+                            dayjs.locale('vi')
                             return (
                                 <Col span={24} md={12} key={item._id}>
                                     <Card size="small" title={null} hoverable
