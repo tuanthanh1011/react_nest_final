@@ -59,7 +59,7 @@ const UserResume = (props: any) => {
             dataIndex: "status",
         },
         {
-            title: 'Ngày rải CV',
+            title: 'Ngày gửi CV',
             dataIndex: "createdAt",
             render(value, record, index) {
                 return (
@@ -181,7 +181,7 @@ const ManageAccount = (props: IProps) => {
     const items: TabsProps['items'] = [
         {
             key: 'user-resume',
-            label: `Rải CV`,
+            label: `Gửi CV`,
             children: <UserResume />,
         },
         {
