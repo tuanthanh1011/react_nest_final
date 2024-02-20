@@ -16,7 +16,7 @@
     "@ant-design/pro-components": "^2.4.16",
     "@ant-design/pro-layout": "^7.13.5",
     "@reduxjs/toolkit": "1.9.3",
-    "antd": "5.5.0",
+    "antd": "^5.5.0",
     "async-mutex": "0.4.0",
     "axios": "1.4.0",
     "dayjs": "1.11.8",
