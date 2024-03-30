@@ -12,7 +12,6 @@ import {
   ISubscribers,
   IPassUser,
 } from "@/types/backend";
-import { AxiosRequestConfig } from "axios";
 import axios from "config/axios-customize";
 
 /**
@@ -64,11 +63,10 @@ export const callUploadSingleFile = (file: any, folderType: string) => {
   bodyFormData.append("fileUpload", file);
   return axios<IBackendRes<{ fileName: string }>>({
     method: "post",
-    url: "/api/v1/files/upload",
+    url: `/api/v1/files/upload?folder_type=${folderType}`, // Set folder_type vào param của URL
     data: bodyFormData,
     headers: {
       "Content-Type": "multipart/form-data",
-      folder_type: folderType,
     },
   });
 };
@@ -83,21 +81,12 @@ export const callCreateCompany = (
   description: string,
   logo: string
 ) => {
-  const config: AxiosRequestConfig = {
-    headers: {
-      folder_type: "company", // Thiết lập header folder_type
-    },
-  };
-  return axios.post<IBackendRes<ICompany>>(
-    "/api/v1/companies",
-    {
-      name,
-      address,
-      description,
-      logo,
-    },
-    config
-  );
+  return axios.post<IBackendRes<ICompany>>("/api/v1/companies", {
+    name,
+    address,
+    description,
+    logo,
+  });
 };
 
 export const callUpdateCompany = (
@@ -107,21 +96,12 @@ export const callUpdateCompany = (
   description: string,
   logo: string
 ) => {
-  const config: AxiosRequestConfig = {
-    headers: {
-      folder_type: "company", // Thiết lập header folder_type
-    },
-  };
-  return axios.patch<IBackendRes<ICompany>>(
-    `/api/v1/companies/${id}`,
-    {
-      name,
-      address,
-      description,
-      logo,
-    },
-    config
-  );
+  return axios.patch<IBackendRes<ICompany>>(`/api/v1/companies/${id}`, {
+    name,
+    address,
+    description,
+    logo,
+  });
 };
 
 export const callDeleteCompany = (id: string) => {
@@ -193,20 +173,11 @@ export const callFetchJobById = (id: string) => {
 Module Resume
  */
 export const callCreateResume = (url: string, companyId: any, jobId: any) => {
-  const config: AxiosRequestConfig = {
-    headers: {
-      folder_type: "resume", // Thiết lập header folder_type
-    },
-  };
-  return axios.post<IBackendRes<IResume>>(
-    "/api/v1/resumes",
-    {
-      url,
-      companyId,
-      jobId,
-    },
-    config
-  );
+  return axios.post<IBackendRes<IResume>>("/api/v1/resumes", {
+    url,
+    companyId,
+    jobId,
+  });
 };
 
 export const callUpdateResumeStatus = (id: any, status: string) => {
