@@ -153,7 +153,7 @@ const UserUpdateInfo = () => {
             label="Mật khẩu cũ"
             rules={[{ required: true, message: "Vui lòng nhập mật khẩu cũ" }]}
           >
-            <Input.Password placeholder="Nhập mật khẩu mới" />
+            <Input.Password placeholder="Nhập mật khẩu cũ" />
           </Form.Item>
         </Col>
         <Col span={24}>
